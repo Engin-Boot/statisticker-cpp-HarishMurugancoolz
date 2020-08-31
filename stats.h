@@ -25,7 +25,9 @@ namespace Statistics {
 		    for (int i = 0; i < n.size(); i++)
 			{
 				if (max < n[i])
+				{
 					max = n[i];
+				}
 			}
 		}
 		void computeMin(const std::vector<float>& n)
@@ -34,7 +36,9 @@ namespace Statistics {
 		    for (int i = 0; i < n.size(); i++)
 			{
 				if (min > n[i])
+				{
 					min = n[i];
+				}
 			}
 		}
 		
