@@ -1,25 +1,26 @@
 #include <vector>
 #include<cmath>
+#include<climits>
 
 namespace Statistics {
 	class Stats
 	{
 	public:
-		float sum = 0;
+		float sum = 0.0;
 		float average;
-		float max=0;
-	    float min=1000000000.0;
+		float max=INT_MIN;
+	    	float min=INT_MAX;
 
 	
-		float getAverage(const std::vector<float>& n)
+		void computeAverage(const std::vector<float>& n)
 		{
 		    for (int i = 0; i < n.size(); i++)
 			{
 				sum += n[i];
 			}
-			return(sum/n.size());
+			average=(sum/n.size());
 		}
-		float getMax(const std::vector<float>& n)
+		void computeMax(const std::vector<float>& n)
 		{
 		    for (int i = 0; i < n.size(); i++)
 			{
@@ -28,9 +29,8 @@ namespace Statistics {
 					max = n[i];
 				}
 			}
-			return(max);
 		}
-		float getMin(const std::vector<float>& n)
+		void computeMin(const std::vector<float>& n)
 		{
 		    for (int i = 0; i < n.size(); i++)
 			{
@@ -39,11 +39,9 @@ namespace Statistics {
 					min = n[i];
 				}
 			}
-			return(min);
 		}
 		
     };
 	    
 Stats ComputeStatistics(const std::vector<float>& n);
 }
-
