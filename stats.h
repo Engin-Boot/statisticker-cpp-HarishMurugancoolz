@@ -23,7 +23,10 @@ namespace Statistics {
 		void computeMax(const std::vector<float>& n)
 		{
 			if(n.size()==0)
+			{
 				max=(0.0/0.0);
+				return;
+			}
 		    for (int i = 0; i < n.size(); i++)
 			{
 				if (max < n[i])
@@ -33,7 +36,10 @@ namespace Statistics {
 		void computeMin(const std::vector<float>& n)
 		{
 			if(n.size()==0)
+			{
 				min=(0.0/0.0);
+				return;
+			}
 		    for (int i = 0; i < n.size(); i++)
 			{
 				if (min > n[i])
