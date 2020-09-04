@@ -1,6 +1,8 @@
 #include <vector>
 #include<cmath>
 #include<climits>
+#include<algorithm>
+using namespace std;
 
 namespace Statistics {
 	class Stats
@@ -10,6 +12,10 @@ namespace Statistics {
 		float average;
 		float max=INT_MIN;
 	    float min=INT_MAX;
+	    static bool isNAN(float num1,float num2)
+	    {
+	        return !isnan(num1)||!isnan(num2);
+	    }
         void computeAverage(const std::vector<float>& statsData)
 		{
 		    float sum = 0.0;
@@ -26,24 +32,14 @@ namespace Statistics {
 		}
 		void computeMax(const std::vector<float>& statsData)
 		{
-		    for (int i = 0; i < statsData.size(); i++)
-			{
-				if (max < statsData[i]&&!isnan(statsData[i]))
-				{
-					max = statsData[i];
-				}
-			}
+		    
+			max=*max_element(statsData.begin(),statsData.end(),isNAN);
+			
 		}
 		void computeMin(const std::vector<float>& statsData)
 		{
 			
-		    for (int i = 0; i < statsData.size(); i++)
-			{
-				if (min > statsData[i]&&!isnan(statsData[i]))
-				{
-					min = statsData[i];
-				}
-			}
+		    min=*min_element(statsData.begin(),statsData.end(),isNAN);
 		}
 		
     };
