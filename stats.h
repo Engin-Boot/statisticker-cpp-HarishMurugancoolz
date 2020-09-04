@@ -13,12 +13,16 @@ namespace Statistics {
         void computeAverage(const std::vector<float>& statsData)
 		{
 		    float sum = 0.0;
+		    int count_valid_data=0;
 		    for (int i = 0; i < statsData.size(); i++)
 			{
 			   if(!isnan(statsData[i]))
+			   {
 				    sum += statsData[i];
+				    count_valid_data++;
+			   }
 			}
-			average=(sum/statsData.size());
+			average=(sum/count_valid_data);
 		}
 		void computeMax(const std::vector<float>& statsData)
 		{
