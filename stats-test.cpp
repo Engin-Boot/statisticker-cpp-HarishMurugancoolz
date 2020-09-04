@@ -27,7 +27,7 @@ TEST_CASE("average is NaN for empty array"){
 }
 TEST_CASE("reports average,minimum,maximum for input containing NaN values")
 {
-    auto computedStats = Statistics::ComputeStatistics({nan(""),1.5,7.5,3.9,20.8});
+    auto computedStats = Statistics::ComputeStatistics({nan(""),0.5,7.5,3.9,20.8});
     float epsilon = 0.001;
     REQUIRE(std::abs(computedStats.average - 8.175) < epsilon);
     REQUIRE(std::abs(computedStats.max - 20.8) < epsilon);
