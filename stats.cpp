@@ -1,16 +1,17 @@
 #include "stats.h"
 using namespace Statistics;
-Stats Statistics::ComputeStatistics(const std::vector<float>& n) {
-	Stats s;
-	s.computeAverage(n);
-	if(n.size()==0)
-	    s.min=s.max=(0.0/0.0);
+Stats Statistics::ComputeStatistics(const std::vector<float>& StatsData) {
+	Stats stats;
+	stats.computeAverage(StatsData);
+	if(StatsData.size()==0)
+	    stats.min=stats.max=(0.0/0.0);
 	else
 	{
-	    s.computeMax(n);
-	    s.computeMin(n);
+	    stats.computeMax(StatsData);
+	    stats.computeMin(StatsData);
 	}
-	return s;
+	return stats;
     
 }
+
 
