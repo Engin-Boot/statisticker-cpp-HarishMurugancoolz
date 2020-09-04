@@ -1,26 +1,35 @@
 #include <vector>
 #include<cmath>
 #include<climits>
-#include<algorithm>
 using namespace std;
 
 namespace Statistics {
 	class Stats
 	{
 	public:
-		
 		float average;
 		float max=INT_MIN;
-	    float min=INT_MAX;
-	    static bool isNAN(float num1,float num2)
-	    {
-	        return !isnan(num1)||!isnan(num2);
-	    }
-        void computeAverage(const std::vector<float>& statsData)
+	    	float min=INT_MAX;
+	    
+	    	float getValidMaxNum(float max,float num)
+	   	 {
+	        	if(!isnan(num)&&max<num)
+	            		return num;
+	        	return max;
+	    	 }
+	    
+	    	float getValidMinNum(float min,float num)
+	    	{
+	        	if(!isnan(num)&&min>num)
+	            		return num;
+	       
+	       		return min;
+		}
+	    	void computeAverage(const std::vector<float>& statsData)
 		{
 		    float sum = 0.0;
 		    int count_valid_data=0;
-		    for (int i = 0; i < statsData.size(); i++)
+		    for (unsigned int i = 0; i < statsData.size(); i++)
 			{
 			   if(!isnan(statsData[i]))
 			   {
@@ -32,14 +41,19 @@ namespace Statistics {
 		}
 		void computeMax(const std::vector<float>& statsData)
 		{
-		    
-			max=*max_element(statsData.begin(),statsData.end(),isNAN);
-			
+		    for(unsigned int i=0;i<statsData.size();i++)
+		        {
+		            max=(getValidMaxNum(max,statsData[i]));
+		            
+		        }
 		}
 		void computeMin(const std::vector<float>& statsData)
 		{
-			
-		    min=*min_element(statsData.begin(),statsData.end(),isNAN);
+			for(unsigned int i=0;i<statsData.size();i++)
+		        {
+		            min=(getValidMinNum(min,statsData[i]));
+		            
+		        }
 		}
 		
     };
