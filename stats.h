@@ -6,43 +6,43 @@ namespace Statistics {
 	class Stats
 	{
 	public:
-		float sum = 0.0;
+		
 		float average;
 		float max=INT_MIN;
-	    	float min=INT_MAX;
-
-	
-		void computeAverage(const std::vector<float>& n)
+	    float min=INT_MAX;
+        void computeAverage(const std::vector<float>& statsData)
 		{
-		    for (int i = 0; i < n.size(); i++)
+		    float sum = 0.0;
+		    for (int i = 0; i < statsData.size(); i++)
 			{
-				sum += n[i];
+			   if(!isnan(statsData[i]))
+				    sum += statsData[i];
 			}
-			average=(sum/n.size());
+			average=(sum/statsData.size());
 		}
-		void computeMax(const std::vector<float>& n)
+		void computeMax(const std::vector<float>& statsData)
 		{
-		    for (int i = 0; i < n.size(); i++)
+		    for (int i = 0; i < statsData.size(); i++)
 			{
-				if (max < n[i])
+				if (max < statsData[i]&&!isnan(statsData[i]))
 				{
-					max = n[i];
+					max = statsData[i];
 				}
 			}
 		}
-		void computeMin(const std::vector<float>& n)
+		void computeMin(const std::vector<float>& statsData)
 		{
 			
-		    for (int i = 0; i < n.size(); i++)
+		    for (int i = 0; i < statsData.size(); i++)
 			{
-				if (min > n[i])
+				if (min > statsData[i]&&!isnan(statsData[i]))
 				{
-					min = n[i];
+					min = statsData[i];
 				}
 			}
 		}
 		
     };
 	    
-Stats ComputeStatistics(const std::vector<float>& n);
+Stats ComputeStatistics(const std::vector<float>& statsData);
 }
