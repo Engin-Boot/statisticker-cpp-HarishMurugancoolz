@@ -36,5 +36,4 @@ TEST_CASE("when the input array contains only NaN value then reports NaN for ave
     REQUIRE(std::isnan(computedStats.average)==true);
     REQUIRE(std::isnan(computedStats.max)==true);
     REQUIRE(std::isnan(computedStats.min)==true);
-    
-}
+    }
