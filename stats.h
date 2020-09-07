@@ -10,21 +10,29 @@ namespace Statistics {
 		float average;
 		float max=INT_MIN;
 	    	float min=INT_MAX;
+	    bool isAllNaN(const std::vector<float>& statsData)
+		{
+		    for(unsigned int i=0;i<statsData.size();i++)
+		        {
+		            if(!isnan(statsData[i]))
+		                return false;
+		            
+		        }
+		       return true;
+		}
 	    
 	    	float getValidMaxNum(float max,float num)
-	   	 {
-	        	if(isnan(num))
-				return num;
-			if(max<num)
-				return num;
-			return max;
-	    	 }
+	   	    {
+	        	
+			    if(!isnan(num)&&max<num)
+				    return num;
+			    return max;
+	    	}
 	    
 	    	float getValidMinNum(float min,float num)
 	    	{
-	        	if(isnan(num))
-				return num;
-			if(min>num)
+	        
+			if(!isnan(num)&&min>num)
 				return num;
 			return min;
 		}
@@ -44,7 +52,8 @@ namespace Statistics {
 		}
 		void computeMax(const std::vector<float>& statsData)
 		{
-		    for(unsigned int i=0;i<statsData.size();i++)
+		   
+		        for(unsigned int i=0;i<statsData.size();i++)
 		        {
 		            max=(getValidMaxNum(max,statsData[i]));
 		            
