@@ -15,6 +15,8 @@ namespace Statistics {
 	   	 {
 	        	if(!isnan(num)&&max<num)
 	            		return num;
+			else
+				return num;
 	        	return max;
 	    	 }
 	    
@@ -22,6 +24,8 @@ namespace Statistics {
 	    	{
 	        	if(!isnan(num)&&min>num)
 	            		return num;
+			else
+				return num;
 	       
 	       		return min;
 		}
