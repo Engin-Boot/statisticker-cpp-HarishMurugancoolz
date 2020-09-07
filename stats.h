@@ -13,21 +13,20 @@ namespace Statistics {
 	    
 	    	float getValidMaxNum(float max,float num)
 	   	 {
-	        	if(!isnan(num)&&max<num)
-	            		return num;
-			else
+	        	if(isnan(num))
 				return num;
-	        	return max;
+			if(max<num)
+				return num;
+			return max;
 	    	 }
 	    
 	    	float getValidMinNum(float min,float num)
 	    	{
-	        	if(!isnan(num)&&min>num)
-	            		return num;
-			else
+	        	if(isnan(num))
 				return num;
-	       
-	       		return min;
+			if(min>num)
+				return num;
+			return min;
 		}
 	    	void computeAverage(const std::vector<float>& statsData)
 		{
