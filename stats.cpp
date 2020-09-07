@@ -2,11 +2,12 @@
 using namespace Statistics;
 Stats Statistics::ComputeStatistics(const std::vector<float>& StatsData) {
 	Stats stats;
-	stats.computeAverage(StatsData);
-	if(StatsData.size()==0)
-	    stats.min=stats.max=(0.0/0.0);
+	
+	if(StatsData.size()==0||stats.isAllNaN(StatsData))
+	    stats.min=stats.max=stats.average=(0.0/0.0);
 	else
 	{
+	    stats.computeAverage(StatsData);
 	    stats.computeMax(StatsData);
 	    stats.computeMin(StatsData);
 	}
